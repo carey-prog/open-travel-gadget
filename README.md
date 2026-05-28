@@ -2,6 +2,8 @@
 
 全国旅游城市 **决策助手**：选择出发地与目的地，获取 **高铁 / 飞机 / 火车** 大交通建议 + 每日行程规划（不代订票）。
 
+![Travel Gadget 界面预览](docs/preview.png)
+
 技术栈：Spring Boot 3.4、Spring AI Alibaba Graph、DashScope Embedding + Redis Stack RAG、DeepSeek 生成、智谱联网搜索。
 
 ## 工作流
