@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>API 配置 · 旅游神器</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body class="module-page">
+<div class="page">
+    <header th:replace="~{fragments/layout :: site-header(${activeNav})}"></header>
+
+    <section class="card">
+        <div class="card-body">
+            <h2>🔑 API Key 配置</h2>
+            <p class="hint">默认使用 <code>application.yml</code> 中的 Key；本页保存会写入 <code>data/api-settings.json</code> 并覆盖（不提交 Git）。留空项表示不修改已保存的值。</p>
+            <p class="sub-hint warn-text" id="settingsNote">加载中…</p>
+
+            <div class="status-grid" id="statusGrid"></div>
+
+            <form id="keysForm" class="keys-form">
+                <div class="form-group">
+                    <label for="deepseekKey">DeepSeek API Key <span class="req">*</span></label>
+                    <input type="password" id="deepseekKey" name="deepseekApiKey" autocomplete="off"
+                           placeholder="用于生成行程 JSON">
+                    <span class="field-hint" id="deepseekMasked"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dashscopeKey">DashScope API Key（阿里云百炼）</label>
+                    <input type="password" id="dashscopeKey" name="dashscopeApiKey" autocomplete="off"
+                           placeholder="text-embedding-v3，用于 RAG 向量检索">
+                    <span class="field-hint" id="dashscopeMasked"></span>
+                </div>
+                <div class="form-group">
+                    <label for="zhipuKey">智谱 API Key</label>
+                    <input type="password" id="zhipuKey" name="zhipuApiKey" autocomplete="off"
+                           placeholder="格式：id.secret，用于联网搜索">
+                    <span class="field-hint" id="zhipuMasked"></span>
+                </div>
+                <button type="submit" class="primary-btn" id="saveBtn">保存配置</button>
+            </form>
+
+            <div class="import-box rag-ops-box">
+                <h3>📚 RAG 知识库运维</h3>
+                <p class="sub-hint" id="ragStatusHint">加载中…</p>
+                <pre class="rag-status-pre" id="ragStatusDetail"></pre>
+                <button type="button" class="secondary-btn" id="ragRebuildBtn">重建 RAG 索引</button>
+                <p class="sub-hint">修改 <code>src/main/resources/rag/cities/*.md</code> 后点此重建，无需重启应用。</p>
+            </div>
+
+            <details class="help-box">
+                <summary>获取 Key 说明</summary>
+                <ul>
+                    <li>DeepSeek：<a href="https://platform.deepseek.com/" target="_blank" rel="noopener">platform.deepseek.com</a></li>
+                    <li>DashScope：<a href="https://dashscope.console.aliyun.com/" target="_blank" rel="noopener">阿里云百炼控制台</a></li>
+                    <li>智谱：<a href="https://open.bigmodel.cn/usercenter/apikeys" target="_blank" rel="noopener">open.bigmodel.cn</a></li>
+                </ul>
+                <p class="sub-hint">也可在 <code>application.yml</code> 中直接填写。修改 DashScope Key 后需重启；仅改攻略文件时用上方「重建 RAG」即可。</p>
+            </details>
+        </div>
+    </section>
+
+    <footer th:replace="~{fragments/layout :: site-footer}"></footer>
+</div>
+<script th:src="@{/js/settings.js}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title th:text="${title}">旅游神器</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+
+<header class="site-header" th:fragment="site-header(activeNav)">
+    <div class="site-brand">
+        <div class="logo-box">游</div>
+        <div class="header-text">
+            <h1>旅游神器</h1>
+            <p class="tagline">全国旅游城市 · 大交通 + 行程规划</p>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a th:href="@{/}" th:classappend="${activeNav == 'home'} ? ' active' : ''">规划行程</a>
+        <a th:href="@{/trips}" th:classappend="${activeNav == 'trips'} ? ' active' : ''">我的行程</a>
+        <a th:href="@{/settings}" th:classappend="${activeNav == 'settings'} ? ' active' : ''">API 配置</a>
+    </nav>
+</header>
+
+<footer class="page-footer site-footer" th:fragment="site-footer">
+    <span>全国多城攻略 · 不代订票</span>
+    <span class="footer-dot">·</span>
+    <span>DeepSeek + RAG + 智谱联网</span>
+</footer>
+
+</body>
+</html>

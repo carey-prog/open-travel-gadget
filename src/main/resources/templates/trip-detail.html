@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>行程详情 · 旅游神器</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body class="module-page">
+<div class="page">
+    <header class="header compact">
+        <a class="back-link" th:href="@{/}">← 返回规划</a>
+        <h1>行程详情</h1>
+        <div class="detail-actions" id="detailActions" hidden>
+            <button type="button" class="secondary-btn" id="exportBtn">导出 Markdown</button>
+            <button type="button" class="secondary-btn" id="shareBtn">生成分享链接</button>
+        </div>
+    </header>
+
+    <div id="tripDetail" class="card">
+        <div class="card-body">
+            <div class="empty-result">
+                <div class="spinner small"></div>
+                <p>加载行程中…</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="card" id="detailChatSection" hidden>
+        <div class="card-body">
+            <h3>对话改行程</h3>
+            <div class="chat-log" id="detailChatLog"></div>
+            <div class="chat-input-row">
+                <input type="text" id="detailRefineInput" placeholder="描述你想怎么改…">
+                <button type="button" class="secondary-btn" id="detailRefineBtn">发送</button>
+            </div>
+        </div>
+    </section>
+
+    <footer th:replace="~{fragments/layout :: site-footer}"></footer>
+</div>
+<script th:inline="javascript">
+    window.TRIP_ID = /*[[${tripId}]]*/ 0;
+</script>
+<script th:src="@{/js/trip-detail.js}"></script>
+</body>
+</html>

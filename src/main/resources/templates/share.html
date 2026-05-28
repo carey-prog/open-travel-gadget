@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>分享行程 · 旅游神器</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body class="module-page">
+<div class="page">
+    <header class="header compact">
+        <h1>分享行程</h1>
+        <p class="sub-hint">只读查看，不代订票</p>
+    </header>
+    <div id="shareContent" class="card">
+        <div class="card-body">
+            <div class="empty-result">
+                <div class="spinner small"></div>
+                <p>加载中…</p>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{fragments/layout :: site-footer}"></footer>
+</div>
+<script th:inline="javascript">
+    window.SHARE_TOKEN = /*[[${shareToken}]]*/ '';
+</script>
+<script th:src="@{/js/share.js}"></script>
+</body>
+</html>

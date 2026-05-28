@@ -1,0 +1,86 @@
+# 旅游神器 - 全国旅游城市决策助手（大交通建议 + 行程规划，不代订票）
+# 敏感配置：复制 application-local.yml.example 为 application-local.yml 并填写 Key
+# 或通过环境变量 / 页面「API 配置」写入 data/api-settings.json（优先生效）
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: travel-gadget
+
+  autoconfigure:
+    exclude:
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeAgentAutoConfiguration
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeChatAutoConfiguration
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeEmbeddingAutoConfiguration
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeImageAutoConfiguration
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeAudioSpeechAutoConfiguration
+      - com.alibaba.cloud.ai.autoconfigure.dashscope.DashScopeAudioTranscriptionAutoConfiguration
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/travel_gadget?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: ${MYSQL_PASSWORD:your-mysql-password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      # RAG 向量库需 Redis Stack（RediSearch）：docker run -d -p 6379:6379 redis/redis-stack-server
+      timeout: 10s
+
+  ai:
+    model:
+      chat: none
+      embedding: none
+      audio:
+        speech: none
+        transcription: none
+      image: none
+      moderation: none
+
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY:your-dashscope-key}
+      embedding:
+        options:
+          model: text-embedding-v3
+
+    vectorstore:
+      redis:
+        initialize-schema: true
+        index-name: travel-gadget-rag
+        prefix: "travel-rag:"
+
+zhipu:
+  api-key: ${ZHIPU_API_KEY:your-id.your-secret}
+  base-url: https://open.bigmodel.cn/api/paas/v4/
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+travelgadget:
+  settings:
+    file: ./data/api-settings.json
+  deepseek:
+    api-key: ${DEEPSEEK_API_KEY:your-deepseek-key}
+    base-url: https://api.deepseek.com
+    model: deepseek-chat
+    temperature: 0.6
+  agent:
+    state-ttl-hours: 24
+    session-prefix: "travel:session:"
+logging:
+  level:
+    org.carey.travelgadget: INFO
+    com.alibaba.cloud.ai: INFO

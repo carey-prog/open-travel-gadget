@@ -1,0 +1,142 @@
+# 全国旅游目的地与常见出发地（本地配置，可扩展）
+
+departure-cities:
+  - id: beijing
+    name: 北京
+  - id: shanghai
+    name: 上海
+  - id: guangzhou
+    name: 广州
+  - id: shenzhen
+    name: 深圳
+  - id: hangzhou
+    name: 杭州
+  - id: nanjing
+    name: 南京
+  - id: chengdu
+    name: 成都
+  - id: wuhan
+    name: 武汉
+  - id: changsha
+    name: 长沙
+  - id: chongqing
+    name: 重庆
+  - id: xian
+    name: 西安
+  - id: tianjin
+    name: 天津
+  - id: suzhou
+    name: 苏州
+  - id: xiamen
+    name: 厦门
+  - id: fuzhou
+    name: 福州
+
+destinations:
+  - id: chaoshan
+    name: 潮汕（潮州+汕头）
+    cities: 潮州,汕头
+    arrival-hub: chaoshan_station
+    arrival-hub-label: 潮汕站（高铁）
+    transport-mode: high_speed_rail
+    local-transport-note: 高铁抵达潮汕站；古城步行+打车，不含自驾租车。
+    theme-options: 美食,古城文化,海岛,摄影,综合
+
+  - id: beijing
+    name: 北京
+    cities: 北京
+    arrival-hub: beijing_south
+    arrival-hub-label: 北京南站/首都机场
+    transport-mode: multi
+    local-transport-note: 市区地铁+打车；长城等远郊建议包车或旅游专线一日。
+    theme-options: 历史文化,亲子,美食,摄影,综合
+
+  - id: shanghai
+    name: 上海
+    cities: 上海
+    arrival-hub: shanghai_hongqiao
+    arrival-hub-label: 虹桥站/浦东机场
+    transport-mode: multi
+    local-transport-note: 地铁为主；迪士尼、朱家角等需预留通勤时间。
+    theme-options: 都市,美食,亲子,摄影,综合
+
+  - id: chengdu
+    name: 成都
+    cities: 成都
+    arrival-hub: chengdu_east
+    arrival-hub-label: 成都东站/双流机场
+    transport-mode: multi
+    local-transport-note: 市区地铁+打车；都江堰、青城山建议单独一日。
+    theme-options: 美食,熊猫,休闲,古城,综合
+
+  - id: xian
+    name: 西安
+    cities: 西安
+    arrival-hub: xian_north
+    arrival-hub-label: 西安北站/咸阳机场
+    transport-mode: multi
+    local-transport-note: 城墙内步行+地铁；兵马俑、华山需单独安排交通。
+    theme-options: 历史文化,美食,摄影,综合
+
+  - id: hangzhou
+    name: 杭州
+    cities: 杭州
+    arrival-hub: hangzhou_east
+    arrival-hub-label: 杭州东站/萧山机场
+    transport-mode: multi
+    local-transport-note: 西湖周边步行+公交；灵隐、西溪可打车或公交。
+    theme-options: 自然风光,茶文化,休闲,综合
+
+  - id: guilin
+    name: 桂林
+    cities: 桂林,阳朔
+    arrival-hub: guilin_station
+    arrival-hub-label: 桂林站/两江机场
+    transport-mode: multi
+    local-transport-note: 漓江游船、阳朔西街建议分日；山区雨季注意路况。
+    theme-options: 山水,摄影,休闲,综合
+
+  - id: sanya
+    name: 三亚
+    cities: 三亚
+    arrival-hub: sanya_phoenix
+    arrival-hub-label: 凤凰机场/三亚站
+    transport-mode: flight
+    local-transport-note: 海岛度假以打车/租车为主；旺季机票与酒店需提前预订。
+    theme-options: 海岛,亲子,休闲,摄影,综合
+
+  - id: guangzhou
+    name: 广州
+    cities: 广州
+    arrival-hub: guangzhou_south
+    arrival-hub-label: 广州南站/白云机场
+    transport-mode: multi
+    local-transport-note: 地铁发达；早茶与老城步行+地铁即可。
+    theme-options: 美食,都市,亲子,综合
+
+  - id: chongqing
+    name: 重庆
+    cities: 重庆
+    arrival-hub: chongqing_north
+    arrival-hub-label: 重庆北站/江北机场
+    transport-mode: multi
+    local-transport-note: 山城步行多、轻轨便利；武隆天坑建议两日或一日早出晚归。
+    theme-options: 美食,夜景,休闲,综合
+
+  - id: nanjing
+    name: 南京
+    cities: 南京
+    arrival-hub: nanjing_south
+    arrival-hub-label: 南京南站/禄口机场
+    transport-mode: multi
+    local-transport-note: 夫子庙、中山陵等地铁+步行；春秋适宜。
+    theme-options: 历史文化,美食,综合
+
+  - id: xiamen
+    name: 厦门
+    cities: 厦门
+    arrival-hub: xiamen_north
+    arrival-hub-label: 厦门北站/高崎机场
+    transport-mode: multi
+    local-transport-note: 鼓浪屿需预约船票；环岛路骑行或公交。
+    theme-options: 海岛,美食,摄影,综合

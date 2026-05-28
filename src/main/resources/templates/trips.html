@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>我的行程 · 旅游神器</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body class="module-page">
+<div class="page">
+    <header th:replace="~{fragments/layout :: site-header(${activeNav})}"></header>
+
+    <section class="card">
+        <div class="card-body">
+            <h2>📋 我的行程</h2>
+            <p class="hint">最近生成的全国行程记录，点击可查看大交通建议与每日安排。</p>
+            <div id="tripList" class="trip-list">
+                <div class="empty-result">
+                    <div class="spinner small"></div>
+                    <p>加载中…</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer th:replace="~{fragments/layout :: site-footer}"></footer>
+</div>
+<script th:src="@{/js/trips.js}"></script>
+</body>
+</html>
